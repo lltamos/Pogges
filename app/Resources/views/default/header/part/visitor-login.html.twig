@@ -9,9 +9,9 @@
       </a>
     </li>
     <li class="user-nav-li-register">
-      <a href="{{ path('register', {goto:_target_path|default(app.request.server.get('REQUEST_URI'))}) }}">
-        <i class="es-icon es-icon-zhuce"></i>{{'homepage.header.register'|trans}}
-      </a>
+{#      <a href="{{ path('register', {goto:_target_path|default(app.request.server.get('REQUEST_URI'))}) }}">#}
+{#        <i class="es-icon es-icon-zhuce"></i>{{'homepage.header.register'|trans}}#}
+{#      </a>#}
     </li>
     {% if mobile %}
       <li class="mobile-switch js-switch-pc"><a href="javascript:;">
@@ -29,4 +29,4 @@
 </li>
 
 <li class="visitor-li hidden-xs"><a href="{{ path('login', {goto:_target_path|default(app.request.server.get('REQUEST_URI'))}) }}">{{'homepage.header.login'|trans}}</a></li>
-<li class="visitor-li hidden-xs"><a href="{{ path('register', {goto:_target_path|default(app.request.server.get('REQUEST_URI'))}) }}">{{'homepage.header.register'|trans}}</a></li>
+{#<li class="visitor-li hidden-xs"><a href="{{ path('register', {goto:_target_path|default(app.request.server.get('REQUEST_URI'))}) }}">{{'homepage.header.register'|trans}}</a></li>#}

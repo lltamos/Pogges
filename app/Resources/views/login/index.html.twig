@@ -12,8 +12,8 @@
   {% endif %}
   <div class="es-section login-section">
     <div class="logon-tab clearfix">
-      <a class="active">{{ 'user.login.login_account'|trans }}</a>
-      <a href="{{ path('register', {goto:_target_path}) }}">{{ 'user.register.register_account'|trans }}</a>
+{#      <a class="active">{{ 'user.login.login_account'|trans }}</a>#}
+{#      <a href="{{ path('register', {goto:_target_path}) }}">{{ 'user.register.register_account'|trans }}</a>#}
     </div>
     <div class="login-main js-login-main">
       <form id="login-form" class="form-vertical" method="post" action="{{ path('login_check') }}">
@@ -59,10 +59,10 @@
       </form>
 
       <div class="mbl">
-        <a class="link-primary" href="{{ path('password_reset') }}">{{ 'user.login.find_password'|trans }}</a>
-        <span class="color-gray mhs">|</span>
-        <span class="color-gray">{{ 'user.login.ask_register'|trans }}</span>
-        <a class="link-primary" href="{{ path('register', {goto:_target_path}) }}">{{ 'user.login.go_register'|trans }}</a>
+{#        <a class="link-primary" href="{{ path('password_reset') }}">{{ 'user.login.find_password'|trans }}</a>#}
+{#        <span class="color-gray mhs">|</span>#}
+{#        <span class="color-gray">{{ 'user.login.ask_register'|trans }}</span>#}
+{#        <a class="link-primary" href="{{ path('register', {goto:_target_path}) }}">{{ 'user.login.go_register'|trans }}</a>#}
       </div>
 
       {% if setting('login_bind.enabled') or ai_face_enabled %}
