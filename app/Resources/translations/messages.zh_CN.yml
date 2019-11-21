@@ -911,8 +911,8 @@ course.delete_from_classroom_tips: 课程已从%classroomName%中移除
 course.not_member_in_classroom_tips: >
   还不是%classroomName%成员,请先<a href="%classroomUrl%">加入%classroomName%</a>
 buy.approve_tips: 购买需要通过实名认证，您还没有完成实名认证，赶快去认证吧~
-buy.payments_disabled_title: 开通支付功能提醒
-buy.payments_disabled_tips: 由于网校未开通任一支付功能，当前商品不支持购买，请联系网校开通支付功能后再进行购买。
+buy.payments_disabled_title: 加入课程提示
+buy.payments_disabled_tips: 请联系教务老师，加入课程！
 course.buy_failed_tips: 真不巧，已经有人抢在你前面下单了，请继续关注
 course.no_avatar_tips: >
   您还没有头像，设置以后才能加入学习<br/>拥有一个独有的头像，老师和同学们能更容易关注到你哦～～
@@ -924,7 +924,7 @@ course.price.show: 课程价格
 
 course.minimum_price.unit: %price%%unit%起
 course.origin_price.RMB: %originPrice%元
-course.price.free: 免费
+course.price.free: 精讲
 course.price.range: >
   价格 : %minPrice%元 - %maxPrice%元
 course.price.fixed: >
