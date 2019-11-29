@@ -6,3 +6,5 @@ app/logs/app.log
 composer.lock
 web/bundles/bazingajstranslation/
 !/vendor/
+app/cache/*
+vendor_user/
