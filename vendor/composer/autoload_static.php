@@ -25,7 +25,7 @@ class ComposerStaticInit68093f1a9756d047f749afafb6a650b9
         '04c6c5c2f7095ccf6c481d3e53e1776f' => __DIR__ . '/..' . '/mustangostang/spyc/Spyc.php',
         '0b994ed09d88003af15ffbb9ef2e73ce' => __DIR__ . '/..' . '/codeages/qiqiuyun-php-sdk/src/functions.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
-        'c65d09b6820da036953a371c8c73a9b1' => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook/polyfills.php',
+        '841780ea2e1d6545ea3a253239d59c05' => __DIR__ . '/..' . '/qiniu/php-sdk/src/Qiniu/functions.php',
         '2a404a48a0596622a2af787408f2be5e' => __DIR__ . '/..' . '/xxtea/xxtea/xxtea.php',
         '1aa6994384dc421cb384ab1d1a3c3b61' => __DIR__ . '/../..' . '/app/AppKernel.php',
     );
@@ -74,13 +74,14 @@ class ComposerStaticInit68093f1a9756d047f749afafb6a650b9
         ),
         'Q' => 
         array (
+            'Qiniu\\' => 6,
             'QiQiuYun\\SDK\\' => 13,
         ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
-            'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
+            'Prophecy\\' => 9,
             'PhpOffice\\PhpWord\\' => 18,
             'PhpOffice\\Common\\' => 17,
         ),
@@ -102,10 +103,6 @@ class ComposerStaticInit68093f1a9756d047f749afafb6a650b9
         array (
             'Gregwar\\Captcha\\' => 16,
         ),
-        'F' => 
-        array (
-            'Facebook\\' => 9,
-        ),
         'E' => 
         array (
             'ExamParser\\' => 11,
@@ -114,7 +111,9 @@ class ComposerStaticInit68093f1a9756d047f749afafb6a650b9
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
+            'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Inflector\\' => 26,
+            'Doctrine\\Common\\Collections\\' => 28,
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Bundle\\DoctrineCacheBundle\\' => 36,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
@@ -258,6 +257,10 @@ class ComposerStaticInit68093f1a9756d047f749afafb6a650b9
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
         ),
+        'Qiniu\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/qiniu/php-sdk/src/Qiniu',
+        ),
         'QiQiuYun\\SDK\\' => 
         array (
             0 => __DIR__ . '/..' . '/codeages/qiqiuyun-php-sdk/src',
@@ -266,13 +269,13 @@ class ComposerStaticInit68093f1a9756d047f749afafb6a650b9
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
-        'Psr\\Http\\Message\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Prophecy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
         ),
         'PhpOffice\\PhpWord\\' => 
         array (
@@ -306,10 +309,6 @@ class ComposerStaticInit68093f1a9756d047f749afafb6a650b9
         array (
             0 => __DIR__ . '/..' . '/gregwar/captcha',
         ),
-        'Facebook\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook',
-        ),
         'ExamParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/codeages/exam-parser/src',
@@ -322,9 +321,17 @@ class ComposerStaticInit68093f1a9756d047f749afafb6a650b9
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
+        'Doctrine\\Common\\Lexer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/lexer/lib/Doctrine/Common/Lexer',
+        ),
         'Doctrine\\Common\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
+        ),
+        'Doctrine\\Common\\Collections\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections',
         ),
         'Doctrine\\Common\\Cache\\' => 
         array (
@@ -442,10 +449,6 @@ class ComposerStaticInit68093f1a9756d047f749afafb6a650b9
         ),
         'P' => 
         array (
-            'Prophecy\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
-            ),
             'Pimple' => 
             array (
                 0 => __DIR__ . '/..' . '/pimple/pimple/src',
@@ -519,14 +522,6 @@ class ComposerStaticInit68093f1a9756d047f749afafb6a650b9
             'Doctrine\\DBAL\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/dbal/lib',
-            ),
-            'Doctrine\\Common\\Lexer\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
-            ),
-            'Doctrine\\Common\\Collections\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/collections/lib',
             ),
             'Doctrine\\Common\\Annotations\\' => 
             array (
@@ -1080,16 +1075,11 @@ class ComposerStaticInit68093f1a9756d047f749afafb6a650b9
         'SessionHandlerInterface' => __DIR__ . '/..' . '/symfony/polyfill-php54/Resources/stubs/SessionHandlerInterface.php',
         'SessionUpdateTimestampHandlerInterface' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',
         'SqlFormatter' => __DIR__ . '/..' . '/jdorn/sql-formatter/lib/SqlFormatter.php',
-        'Text_Diff_Renderer_parallel' => __DIR__ . '/..' . '/cerdic/css-tidy/testing/unit-tests/class.Text_Diff_Renderer_parallel.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'TypeError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
         'csstidy' => __DIR__ . '/..' . '/cerdic/css-tidy/class.csstidy.php',
-        'csstidy_csst' => __DIR__ . '/..' . '/cerdic/css-tidy/testing/unit-tests/class.csstidy_csst.php',
-        'csstidy_harness' => __DIR__ . '/..' . '/cerdic/css-tidy/testing/unit-tests/class.csstidy_harness.php',
         'csstidy_optimise' => __DIR__ . '/..' . '/cerdic/css-tidy/class.csstidy_optimise.php',
         'csstidy_print' => __DIR__ . '/..' . '/cerdic/css-tidy/class.csstidy_print.php',
-        'csstidy_reporter' => __DIR__ . '/..' . '/cerdic/css-tidy/testing/unit-tests/class.csstidy_reporter.php',
-        'csstidy_test_csst' => __DIR__ . '/..' . '/cerdic/css-tidy/testing/unit-tests/test.csst.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

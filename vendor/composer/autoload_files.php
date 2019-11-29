@@ -24,7 +24,7 @@ return array(
     '04c6c5c2f7095ccf6c481d3e53e1776f' => $vendorDir . '/mustangostang/spyc/Spyc.php',
     '0b994ed09d88003af15ffbb9ef2e73ce' => $vendorDir . '/codeages/qiqiuyun-php-sdk/src/functions.php',
     '2cffec82183ee1cea088009cef9a6fc3' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
-    'c65d09b6820da036953a371c8c73a9b1' => $vendorDir . '/facebook/graph-sdk/src/Facebook/polyfills.php',
+    '841780ea2e1d6545ea3a253239d59c05' => $vendorDir . '/qiniu/php-sdk/src/Qiniu/functions.php',
     '2a404a48a0596622a2af787408f2be5e' => $vendorDir . '/xxtea/xxtea/xxtea.php',
     '1aa6994384dc421cb384ab1d1a3c3b61' => $baseDir . '/app/AppKernel.php',
 );

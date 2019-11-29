@@ -1,4 +1,8 @@
 app/cache
 node_modules/
-vendor/
 .idea/
+vendor_user/
+app/logs/app.log
+composer.lock
+web/bundles/bazingajstranslation/
+!/vendor/
