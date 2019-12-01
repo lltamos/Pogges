@@ -4,7 +4,7 @@ parameters:
     database_host: 60.205.7.211
     database_port: 3306
     database_name: edusoho
-    database_user: Bjciri2019.
-    database_password: null
+    database_user: root
+    database_password: Bjciri2019.
     locale: zh_CN
     secret: ThisTokenIsNotSoSecretChangeIt

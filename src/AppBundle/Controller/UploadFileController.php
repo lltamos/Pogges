@@ -19,11 +19,14 @@ use Biz\User\UserException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use AppBundle\Util\QiNiuUtil;
 
 class UploadFileController extends BaseController
 {
     public function uploadAction(Request $request)
     {
+
+
         if ($request->isMethod('OPTIONS')) {
             // SDK 跨域认证
             $response = $this->createJsonResponse(true);
@@ -31,7 +34,6 @@ class UploadFileController extends BaseController
 
             return $response;
         }
-
         $token = $request->request->get('token');
         $token = $this->getUserService()->getToken('fileupload', $token);
 
@@ -46,12 +48,20 @@ class UploadFileController extends BaseController
         }
         $this->getCurrentUser()->fromArray($user);
 
-        $targetType = $request->query->get('targetType');
-        $targetId = $request->query->get('targetId');
+//        $targetType = $request->query->get('targetType');
+//        $targetId = $request->query->get('targetId');
 
         $originalFile = $this->get('request')->files->get('file');
 
-        $this->getUploadFileService()->moveFile($targetType, $targetId, $originalFile, $token['data']);
+        //七牛云上传文件
+        $keyData = $token['data'];
+        $keyHash = $keyData['hashId'];
+        $fileName = $keyData['fileName'];
+        $qn = new QiNiuUtil();
+        $qn->put($keyHash, $originalFile, $fileName);
+
+        //文件存到服务器
+//        $this->getUploadFileService()->moveFile($targetType, $targetId, $originalFile, $token['data']);
 
         $response = $this->createJsonResponse($token['data']);
         $response->headers->set('Access-Control-Allow-Origin', '*');
@@ -92,18 +102,21 @@ class UploadFileController extends BaseController
 
     protected function downloadLocalFile(Request $request, $file)
     {
-        $response = BinaryFileResponse::create($file['fullpath'], 200, array(), false);
-        $response->trustXSendfileTypeHeader();
 
-        $fileName = urlencode(str_replace(' ', '', $file['filename']));
-        $response->headers->set('Content-Disposition', 'attachment; filename='.$fileName."; filename*=UTF-8''".$fileName);
-
-        $mimeType = FileToolkit::getMimeTypeByExtension($file['ext']);
-
-        if ($mimeType) {
-            $response->headers->set('Content-Type', $mimeType);
+        $fileName = $file['hashId'];
+        $qn = new QiNiuUtil();
+        if ($qn->exist($fileName)) {
+            return $this->redirect($qn->rootUrl . $fileName);
+        } else {
+            $fileName = urlencode(str_replace(' ', '', $file['filename']));
+            $response = BinaryFileResponse::create($file['fullpath'], 200, array(), false);
+            $response->trustXSendfileTypeHeader();
+            $response->headers->set('Content-Disposition', 'attachment; filename=' . $fileName . "; filename*=UTF-8''" . $fileName);
+            $mimeType = FileToolkit::getMimeTypeByExtension($file['ext']);
+            if ($mimeType) {
+                $response->headers->set('Content-Type', $mimeType);
+            }
         }
-
         return $response;
     }
 

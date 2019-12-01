@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Course;
 use AppBundle\Common\Paginator;
 use AppBundle\Common\FileToolkit;
 use AppBundle\Common\ArrayToolkit;
+use AppBundle\Util\QiNiuUtil;
 use Biz\Common\CommonException;
 use Biz\Course\MaterialException;
 use Biz\File\UploadFileException;
@@ -250,7 +251,11 @@ class CourseSetFileManageController extends BaseController
                 $fileIds = array_unique(ArrayToolkit::column($deletedMaterials, 'fileId'));
                 foreach ($fileIds as $fileId) {
                     if ($this->getUploadFileService()->canManageFile($fileId)) {
+                        $tf = $this->getUploadFileService()->getFile($fileId);
                         $this->getUploadFileService()->deleteFile($fileId);
+                        $delFileName = $tf['hashId'];
+                        $qn = new QiNiuUtil();
+                        $qn->delete($delFileName);
                     }
                 }
             }

@@ -13,7 +13,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Codeages\Biz\Framework\Service\Exception\AccessDeniedException;
 use Codeages\Biz\Framework\Service\Exception\InvalidArgumentException;
 use AppBundle\Common\Exception\AbstractException;
-
+use AppBundle\Util\MyLog;
 class BaseService extends \Codeages\Biz\Framework\Service\BaseService
 {
     private $lock = null;
@@ -174,4 +174,13 @@ class BaseService extends \Codeages\Biz\Framework\Service\BaseService
     {
         return ServiceKernel::instance()->trans($message, $arguments, $domain, $locale);
     }
+
+    protected function log($msg,$target = null)
+    {
+        $backtrace = debug_backtrace();
+        $log = new MyLog();
+        $log->logger(get_class($this) . '::' . $backtrace[1]['function'] . '::' . $target, $msg);
+
+    }
+
 }

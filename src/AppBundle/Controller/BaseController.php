@@ -16,6 +16,7 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Codeages\Biz\Framework\Service\Exception\AccessDeniedException;
 use AppBundle\Common\Exception\AbstractException;
 use AppBundle\Common\JWTAuth;
+use AppBundle\Util\MyLog;
 
 class BaseController extends Controller
 {
@@ -428,5 +429,13 @@ class BaseController extends Controller
         $key = md5($accessKey.$secretKey);
 
         return new JWTAuth($key);
+    }
+
+    protected function log($msg, $target = null)
+    {
+        $backtrace = debug_backtrace();
+        $log = new MyLog();
+        $log->logger(get_class($this) . '::' . $backtrace[1]['function'] . '::' . $target, $msg);
+
     }
 }

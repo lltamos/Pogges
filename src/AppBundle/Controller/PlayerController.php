@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Common\FileToolkit;
+use AppBundle\Util\QiNiuUtil;
 use Biz\File\UploadFileException;
 use Biz\Player\PlayerException;
 use Biz\Player\Service\PlayerService;
@@ -48,8 +49,17 @@ class PlayerController extends BaseController
                 $mp4Url = $videoPlayer['mp4Url'];
             }
         }
-        $url = isset($mp4Url) ? $mp4Url : $this->getPlayUrl($file, $context, $ssl);
 
+
+        //获取文件地址
+        $qn = new QiNiuUtil();
+        $fileAddress = $file['hashId'];
+        $isExist = $qn->exist($fileAddress);
+        if ($isExist) {
+            $url = $qn->rootUrl . $fileAddress;
+        } else {
+            $url = isset($mp4Url) ? $mp4Url : $this->getPlayUrl($file, $context, $ssl);
+        }
         $params = array(
             'file' => $file,
             'url' => isset($url) ? $url : null,
