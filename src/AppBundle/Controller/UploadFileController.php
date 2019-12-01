@@ -58,8 +58,10 @@ class UploadFileController extends BaseController
         $keyHash = $keyData['hashId'];
         $fileName = $keyData['fileName'];
         $qn = new QiNiuUtil();
-        $qn->put($keyHash, $originalFile, $fileName);
-
+        $status = $qn->put($keyHash, $originalFile, $fileName);
+        if (!$status) {
+            $this->createNewException(TokenException::TOKEN_INVALID());
+        }
         //文件存到服务器
 //        $this->getUploadFileService()->moveFile($targetType, $targetId, $originalFile, $token['data']);
 
