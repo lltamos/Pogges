@@ -35,7 +35,7 @@ class TestQiniuController extends BaseController
 
     public function toFileFormAction()
     {
-        $this->log("getLltLogger", 'key');
+//        $this->log("getLltLogger", 'key');
         return $this->render('llttest/fileupload.html.twig', array('name' => 'llt'));
     }
 

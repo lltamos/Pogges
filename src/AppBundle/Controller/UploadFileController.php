@@ -57,14 +57,16 @@ class UploadFileController extends BaseController
         $keyData = $token['data'];
         $keyHash = $keyData['hashId'];
         $fileName = $keyData['fileName'];
-        $qn = new QiNiuUtil();
-        $status = $qn->put($keyHash, $originalFile, $fileName);
-        if (!$status) {
-            $this->createNewException(TokenException::TOKEN_INVALID());
-        }
+//        $qn = new QiNiuUtil();
+//        $status = $qn->put($keyHash, $originalFile, $fileName);
+//        if (!$status) {
+//            $this->createNewException(TokenException::TOKEN_INVALID());
+//        }
         //文件存到服务器
-//        $this->getUploadFileService()->moveFile($targetType, $targetId, $originalFile, $token['data']);
 
+//        $this->log('开始上传文件'.date("y-m-d h:i:s",time()));
+//        $this->getUploadFileService()->moveFile($targetType, $targetId, $originalFile, $token['data']);
+        $this->log('待上传文件名称:' . $keyHash . '文件真实名字' . $fileName, '文件上传接口调用');
         $response = $this->createJsonResponse($token['data']);
         $response->headers->set('Access-Control-Allow-Origin', '*');
 

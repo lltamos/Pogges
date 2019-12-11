@@ -56,9 +56,14 @@ class PlayerController extends BaseController
         $fileAddress = $file['hashId'];
         $isExist = $qn->exist($fileAddress);
         if ($isExist) {
+            //返回七牛云真实地址
             $url = $qn->rootUrl . $fileAddress;
         } else {
-            $url = isset($mp4Url) ? $mp4Url : $this->getPlayUrl($file, $context, $ssl);
+            //$url = isset($mp4Url) ? $mp4Url : $this->getPlayUrl($file, $context, $ssl);
+            return $this->render('ltc/step.twig', array(
+                'hashID'=>$fileAddress,
+                'file'=>$file['filename']
+            ));
         }
         $params = array(
             'file' => $file,
@@ -127,7 +132,7 @@ class PlayerController extends BaseController
 
         $dataId = is_array($token['data']) ? $token['data']['globalId'] : $token['data'];
 
-        if ($dataId != ($globalId.$level)) {
+        if ($dataId != ($globalId . $level)) {
             throw $this->createNotFoundException();
         }
 
@@ -208,7 +213,7 @@ class PlayerController extends BaseController
 
             $tokenFields = array(
                 'data' => array(
-                    'globalId' => $file['no'].$level,
+                    'globalId' => $file['no'] . $level,
                 ),
                 'times' => $this->agentInWhiteList($request->headers->get('user-agent')) ? 0 : 1,
                 'duration' => 3600,
